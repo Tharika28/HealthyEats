@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthyEating</title>
+  <link rel="stylesheet" type="text/css" href="/resources/style.css">
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <% include partials/site-navigation.ejs %>
+
+  <main>
+    <ul class="breadcrumb">
+      <li><a href="/index">Home </a>&gt;</li>
+      <li><a href="/mySwaps"> My Swaps</a></li>
+    </ul>
+    <h2>Swap Healthy Recipes </h2>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Swap Offer</th>
+        <th>    </th>
+        <th>    </th>
+      </tr>
+      <% for(var i=0; i < items.length; i++){
+        if(items[i].status=='Pending'){%>
+          <tr>
+
+            <td><a href="/item/<%=items[i].itemCode %>"><%= items[i].itemName%></a></td>
+            <td><a href="/item/<%=items[i].itemCode %>"><%= swapItem[i].itemName%></a></td>
+            <td><a  class="button" href="/mySwaps/accept/<%=items[i].itemCode%>">Accept</a></td>
+            <td><a class="button" href="/mySwaps/reject/<%=items[i].itemCode%>">Reject</a></td>
+          </tr>
+
+          <% } if (items[i].status=='Offered'){%>
+            <tr>
+
+              <td><a href="/item/<%=items[i].itemCode %>"><%= items[i].itemName%></a></td>
+              <td><a href="/item/<%=items[i].itemCode %>"><%=swapItem[i].itemName%></a></td>
+              <td><a  class="button" href="/mySwaps/withdraw/<%=items[i].itemCode%>">Withdraw</a></td>
+            </tr>
+            <%}
+          }%>
+        </table>
+      </main>
+      <% include partials/footer.ejs %>
+    </body>
+    </html>

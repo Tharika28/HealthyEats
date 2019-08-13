@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="/resources/style.css">
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <a class="button_right" href="/categories"> &lt; Back </a>
+  <% include partials/site-navigation.ejs %>
+  <main>
+    <ul class="breadcrumb">
+      <li><a href="/index">Home </a>&gt;</li>
+      <li><a href="/categories"> Categories </a>&gt;</li>
+      <li> <a href="/item/<%=item.itemCode%>"> <%= item.subCategory %></a></li>
+    </ul>
+    <div id="leftCol">
+      <img class="itemSize" src= <%= item.imageUrl %> alt="dress"/>
+    </div>
+    <div id="rightCol">
+      <h3><%= item.itemName %></h3>
+      <br>
+      <p><b>Category :</b><%= item.catalogCategory %></p>
+      <p><b>Average Rating :</b>
+        <% for(i=0;i< item.rating;i++){ %>
+          &starf;
+          <%  } %>
+        </p>
+        <br>
+        <p><%= item.description %></p>
+      </div>
+      <%  if(userItem.length!=0){%>
+        <form method="POST">
+          <fieldset>
+            <legend><strong>Select an item from your available swaps</strong></legend>
+            <input type="hidden" name="action" value="offer">
+            <% for(var j=0; j < userItem.length; j++){ %>
+              <input type="radio" name="itemCode" value="<%= userItem[j].itemCode%>"> <%= userItem[j].itemName%><br>
+              <%}%>
+              <input type="submit" formaction="../myItems/offer/<%=item.itemCode %>" class="button" value="Confirm Swap">
+            </fieldset>
+          </form>
+          <% }
+          else { %>
+            <br><b>Sorry, you do not have any available items for swapping.</b>
+            <br><b>Please add more items to start swapping again!</b>
+            <%}%>
+          </main>
+          <% include partials/footer.ejs %>
+        </body>
+        </html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthyEating</title>
+  <link rel="stylesheet" type="text/css" href="/resources/style.css">
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <% include partials/site-navigation.ejs %>
+
+  <main>
+    <ul class="breadcrumb">
+      <li><a href="/index">Home </a></li>
+    </ul>
+    <div class="c-image">
+      <div class="c-text">
+        <!-- <form action="/action_page.php"> -->
+        <form method="post">
+          <div class="container">
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" id="email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="psw" name="psw" required>
+
+            <input type="submit" formaction="/login%>" class="button" value="Sign In">
+          </div>
+          <% if(errors!=undefined){ %>
+            <p class="requirements"><%=errors%></p>
+            <%}%>
+
+            <div class="container">
+              <span class="psw">Don't have an account? <a href="register">Register</a></span>
+              <!-- <span><b class="note"> Note : For this demo use following email and password. <br/><b class="valid">Email : test@gmail.com <br/>Password : 123</b></span> -->
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <% include partials/footer.ejs %>
+  </body>
+  </html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthyEating</title>
+  <link rel="stylesheet" type="text/css" href="/resources/style.css">
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <% include partials/site-navigation.ejs %>
+
+  <main>
+    <ul class="breadcrumb">
+      <li><a href="/register">Register</a></li>
+    </ul>
+    <form method="post">
+      <div class="container">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <label for="firstName"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="firstName" required>
+        <% if(errors.firstName!=undefined){ %>
+          <p class="requirements" id ="error"><%=errors.firstName.msg%></p>
+          <%}%>
+
+          <label for="lastName"><b>Last Name</b></label>
+          <input type="text" placeholder="Enter Last Name" name="lastName" required>
+          <% if(errors.lastName!=undefined){ %>
+            <p class="requirements" id ="error"><%=errors.lastName.msg%></p>
+            <%}%>
+
+            <label for="address1"><b>Address 1</b></label>
+            <input type="text" placeholder="Enter Address 1" name="address1" required>
+            <% if(errors.address1!=undefined){ %>
+              <p class="requirements" id ="error"><%=errors.address1.msg%></p>
+              <%}%>
+
+              <label for="address2"><b>Address 2</b></label>
+              <input type="text" placeholder="Enter Address 2" name="address2" required>
+              <% if(errors.address2!=undefined){ %>
+                <p class="requirements" id ="error"><%=errors.address2.msg%></p>
+                <%}%>
+
+                <label for="city"><b>City</b></label>
+                <input type="text" placeholder="Enter City" name="city" required>
+                <% if(errors.city!=undefined){ %>
+                  <p class="requirements" id ="error"><%=errors.city.msg%></p>
+                  <%}%>
+
+                  <label for="state"><b>State</b></label>
+                  <input type="text" placeholder="Enter State" name="state" required>
+                  <% if(errors.state!=undefined){ %>
+                    <p class="requirements" id ="error"><%=errors.state.msg%></p>
+                    <%}%>
+
+                    <label for="country"><b>Country</b></label>
+                    <input type="text" placeholder="Enter Country" name="country" required>
+                    <% if(errors.country!=undefined){ %>
+                      <p class="requirements" id ="error"><%=errors.country.msg%></p>
+                      <%}%>
+
+                      <label for="postCode"><b>Postal Code</b></label>
+                      <input type="text" placeholder="Enter Postal Code" name="postCode" required>
+                      <% if(errors.postCode!=undefined){ %>
+                        <p class="requirements" id ="error"><%=errors.postCode.msg%></p>
+                        <%}%>
+
+                        <label for="userId"><b>User Id</b></label>
+                        <input type="text" placeholder="Enter User Name" name="userId" required>
+                        <% if(errors.userId!=undefined){ %>
+                          <p class="requirements" id ="error"><%=errors.userId.msg%></p>
+                          <%}%>
+
+                          <label for="email"><b>Email</b></label>
+                          <input type="text" placeholder="Enter Email" name="email" required>
+                          <% if(errors.email!=undefined){ %>
+                            <p class="requirements" id ="error"><%=errors.email.msg%></p>
+                            <%}%>
+
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+                            <% if(errors.psw!=undefined){ %>
+                              <p class="requirements" id ="error"><%=errors.psw.msg%></p>
+                              <%}%>
+
+                              <label>
+                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                              </label>
+                              <input type="submit" class="button" value="Register">
+                            </div>
+                          </form>
+                        </main>
+                        <% include partials/footer.ejs %>
+                      </body>
+                      </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthyEating</title>
+  <link rel="stylesheet" type="text/css" href="/resources/style.css">
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <% include partials/site-navigation.ejs %>
+
+  <main>
+    <ul class="breadcrumb">
+      <li><a href="/index">Home </a>&gt;</li>
+      <li><a href="/myItems"> My Items</a></li>
+    </ul>
+    <h2>Swap Healthy Recipes</h2>
+    <form method="POST">
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Category</th>
+          <th>My Ratings</th>
+          <th>Swapped</th>
+          <th>    </th>
+          <th>    </th>
+        </tr>
+        <% for(var i=0; i < items.length; i++){ %>
+          <% if(items[i].status != "Deleted" ){%>
+            <tr>
+              <td><a href="/item/<%=items[i].itemCode%>"><%= items[i].itemName%></a></td>
+              <td><%=items[i].subCategory%>:<%=items[i].catalogCategory%></td>
+              <td><% for(var j=0;j< items[i].rating ;j++){%>
+                &starf;
+                <%}%>
+              </td>
+              <td><%=items[i].status %></td>
+              <% if (items[i].status == 'Available')  { %>
+                <td><input  type="submit" formaction="myItems/update/<%=items[i].itemCode %>" class="button" value="Update" ></td>
+                <td><input type="submit" formaction="myItems/delete/<%=items[i].itemCode %>" class="button" value="Delete"></td>
+                <% } else if (items[i].status=='Pending' || items[i].status=='Offered' ){%>
+                  <td><input  type="submit" formaction="myItems/update/<%=items[i].itemCode %>" class="button" value="Update" ></td>
+                  <td></td>
+                  <% } else   {%>
+                    <td></td>
+                    <td></td>
+                    <%}%>
+                  </tr>
+                  <%
+                }
+                %>
+                <%}%>
+              </table>
+            </form>
+            <p id="legend"> Legend : <img class="swap" alt="swap" src="/resources/image/swap.jpg"> swap offer available <img class="swap" alt="tick" src="/resources/image/tick.png"> already swapped </p>
+          </main>
+          <% include partials/footer.ejs %>
+        </body>
+        </html>

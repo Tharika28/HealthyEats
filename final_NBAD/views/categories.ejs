@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="/resources/style.css">
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <% include partials/site-navigation.ejs %>
+
+  <main>
+    <ul class="breadcrumb">
+      <li><a href="/index">Home </a>&gt;</li>
+      <li><a href="/categories"> Categories</a></li>
+    </ul>
+    <section>
+      <h2>Categories</h2>
+      <article>
+        <%  JSON.stringify(items);
+        JSON.stringify(category);
+        for(var j=0; j < category.length; j++){ %>
+          <header>
+            <h3><%= category[j] %></h3>
+          </header>
+          <ul class="sidelink">
+            <% for(var i=0; i < items.length; i++){
+              if(items[i].catalogCategory === category[j] && items[i].status != "Deleted"){
+                %>
+                <li><a href="/item/<%=items[i].itemCode%>"><%=items[i].subCategory%></a><li>
+                  <%}
+                } %>
+              </ul>
+              <%  }%>
+
+            </article>
+          </section>
+        </main>
+        <% include partials/footer.ejs %>
+      </body>
+      </html>
